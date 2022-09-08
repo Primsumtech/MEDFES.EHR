@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "ceEYMZIozKpt3D+0Azo8qRnirWCBucPE81a4rzAFuUk=",
+  "Source": "MEDFES.EHR.API",
+  "BasePath": "_content/MEDFES.EHR.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
