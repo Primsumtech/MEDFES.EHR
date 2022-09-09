@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Application;
-namespace medfesolution.Controllers
+namespace MEDFES.EHR.Controllers
 {
     [ApiController]
     [Route("[controller]")]
