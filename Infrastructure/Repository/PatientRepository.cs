@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Application;
+using Application.Patient;
 using Dapper;
-using Domains.DTO;
+using Domains.DTO.Patients;
 using Infrastructure.DataBaseContext;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
@@ -13,15 +13,15 @@ using Npgsql;
 using Serilog;
 namespace Infrastructure.Repository
 {
-    public class UsersRepository : IUserRepository
+    public class PatientRepository : IPatientRepository
     {
 
         
 
         private readonly  DBContext _configuration;
 
-        private readonly ILogger<UsersRepository> _logger;
-        public UsersRepository(DBContext configuration,ILogger<UsersRepository> logger)
+        private readonly ILogger<PatientRepository> _logger;
+        public PatientRepository(DBContext configuration,ILogger<PatientRepository> logger)
         {
             _configuration = configuration;
             _logger = logger;
@@ -53,13 +53,13 @@ namespace Infrastructure.Repository
         //    }
         //}
 
-        public async Task<IReadOnlyList<MedfesusersDTO>> GetAllAsync()
+        public async Task<IReadOnlyList<PatientDTO>> GetAllPatients()
         {
-            var sql = "SELECT * FROM medfesusers";
-            using (var connection = _configuration.HospitalDBConnectionCreate())
+            var sql = "SELECT firstname || ' ' || lastname as patientname,mobilenumber from public.patient";
+            using (var connection = _configuration.PatientDBConnectionCreate())
             {
                 connection.Open();
-                var result = await connection.QueryAsync<MedfesusersDTO>(sql);
+                var result = await connection.QueryAsync<PatientDTO>(sql);
                 return result.ToList();
             }
         }

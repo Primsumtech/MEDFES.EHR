@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Application;
+using Application.Patient;
 using Infrastructure.Repository;
 using Microsoft.Extensions.DependencyInjection;
-using Infrastructure.DBContext;
+using Infrastructure.DataBaseContext;
 
 namespace Infrastructure
 {
@@ -15,8 +16,9 @@ namespace Infrastructure
 
         public static void AddInfrastructure(this IServiceCollection services)
         {
-            services.AddSingleton<DapperContext>();
+            services.AddSingleton<DBContext>();
             services.AddTransient<IUserRepository,UsersRepository>();
+            services.AddTransient<IPatientRepository, PatientRepository>();
         }
 
     }
