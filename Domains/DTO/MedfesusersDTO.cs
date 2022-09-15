@@ -14,6 +14,11 @@ namespace Domains.DTO
         public string lastname { get; set; }
 
         public string mobileno { get; set; }
+
+        public string Email { get; set; }
+        public int RoleId { get; set; }
+        public byte[] Passwordhash { get; set; }
+        public byte[] Passwordsalt { get; set; }
     }
 
 }

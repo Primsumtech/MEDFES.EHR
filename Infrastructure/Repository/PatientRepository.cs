@@ -55,11 +55,13 @@ namespace Infrastructure.Repository
 
         public async Task<IReadOnlyList<PatientDTO>> GetAllPatients()
         {
-            var sql = "SELECT firstname || ' ' || lastname as patientname,mobilenumber from public.patient";
+            //var sql = "SELECT firstname || ' ' || lastname as patientname,mobilenumber from public.patient";
+
+            string commandText = $"SELECT * FROM public.patient";
             using (var connection = _configuration.PatientDBConnectionCreate())
             {
                 connection.Open();
-                var result = await connection.QueryAsync<PatientDTO>(sql);
+                var result = await connection.QueryAsync<PatientDTO>(commandText);
                 return result.ToList();
             }
         }

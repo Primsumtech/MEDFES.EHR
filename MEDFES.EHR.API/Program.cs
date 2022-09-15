@@ -3,11 +3,18 @@ using Microsoft.Extensions.DependencyInjection;
 using Infrastructure;
 using Microsoft.Extensions.Configuration;
 using Infrastructure.DataBaseContext;
-
+using Application.UseCases.Authentication;
+using Application.UseCases.User;
+using Application.Repositories;
+using Infrastructure.Repository.Authentication;
+using Infrastructure.Repository.User;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
+builder.Services.AddScoped<IAuthenticationUsecase, AuthenticationUsecase>();
+builder.Services.AddScoped<IUserUsecase, UserUsecase>();
+builder.Services.AddScoped<IAuthenticationRepository, AuthenticationRepository>();
+builder.Services.AddScoped<IUserLoginRepository, UserLoginRepository>();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
